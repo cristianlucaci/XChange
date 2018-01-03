@@ -13,6 +13,7 @@ import org.knowm.xchange.gdax.dto.account.GDAXAccount;
 import org.knowm.xchange.gdax.dto.account.GDAXSendMoneyRequest;
 import org.knowm.xchange.gdax.dto.account.GDAXWithdrawCryptoResponse;
 import org.knowm.xchange.gdax.dto.account.GDAXWithdrawFundsRequest;
+import org.knowm.xchange.gdax.dto.trade.GDAXAccountPosition;
 import org.knowm.xchange.gdax.dto.trade.GDAXCoinbaseAccount;
 import org.knowm.xchange.gdax.dto.trade.GDAXCoinbaseAccountAddress;
 import org.knowm.xchange.gdax.dto.trade.GDAXSendMoneyResponse;
@@ -31,6 +32,17 @@ public class GDAXAccountServiceRaw extends GDAXBaseService {
 
   public GDAXAccount[] getGDAXAccountInfo() throws GDAXException, IOException {
     return gdax.getAccounts(apiKey, digest, nonceFactory, passphrase);
+  }
+
+  public GDAXAccount getGDAXAccountInfo(String accountId) throws GDAXException, IOException {
+    return gdax.getAccount(apiKey, digest, nonceFactory, passphrase, accountId);
+  }
+
+  /**
+   * An overview of your profile.
+   */
+  public GDAXAccountPosition getGDAXAccountPosition() throws GDAXException, IOException {
+    return gdax.getAccountPosition(apiKey, digest, nonceFactory, passphrase);
   }
 
   public GDAXSendMoneyResponse sendMoney(String accountId, String to, BigDecimal amount, Currency currency) throws GDAXException, IOException {

@@ -1,0 +1,47 @@
+{
+  "status": "active",
+  "funding": {
+    "max_funding_value": "10000",
+    "funding_value": "622.48199522418175",
+    "oldest_outstanding": {
+      "id": "280c0a56-f2fa-4d3b-a199-92df76fff5cd",
+      "order_id": "280c0a56-f2fa-4d3b-a199-92df76fff5cd",
+      "created_at": "2017-03-18T00:34:34.270484Z",
+      "currency": "USD",
+      "account_id": "202af5e9-1ac0-4888-bdf5-15599ae207e2",
+      "amount": "545.2400000000000000"
+    }
+  },
+  "accounts": {
+    "USD": {
+      "id": "202af5e9-1ac0-4888-bdf5-15599ae207e2",
+      "balance": "0.0000000000000000",
+      "hold": "0.0000000000000000",
+      "funded_amount": "622.4819952241817500",
+      "default_amount": "0"
+    },
+    "BTC": {
+      "id": "1f690a52-d557-41b5-b834-e39eb10d7df0",
+      "balance": "4.7051564815292853",
+      "hold": "0.6000000000000000",
+      "funded_amount": "0.0000000000000000",
+      "default_amount": "0"
+    }
+  },
+  "margin_call": {
+    "active": true,
+    "price": "175.96000000",
+    "side": "sell",
+    "size": "4.70515648",
+    "funds": "624.04210048"
+  },
+  "user_id": "521c20b3d4ab09621f000011",
+  "profile_id": "d881e5a6-58eb-47cd-b8e2-8d9f2e3ec6f6",
+  "position": {
+    "type": "long",
+    "size": "0.59968368",
+    "complement": "-641.91999958602800000000000000",
+    "max_size": "1.49000000"
+  },
+  "product_id": "BTC-USD"
+}

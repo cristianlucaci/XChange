@@ -1,5 +1,14 @@
 package org.knowm.xchange.gdax;
 
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
+
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderStatus;
@@ -29,15 +38,6 @@ import org.knowm.xchange.gdax.dto.trade.GDAXFill;
 import org.knowm.xchange.gdax.dto.trade.GDAXOrder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
 
 public class GDAXAdapters {
 
@@ -140,7 +140,12 @@ public class GDAXAdapters {
       balances.add(new Balance(Currency.getInstance(gdaxAccount.getCurrency()), gdaxAccount.getBalance(), gdaxAccount.getAvailable(), gdaxAccount.getHold()));
     }
 
-    return new Wallet(gdaxAccounts[0].getProfile_id(), balances);
+    return new Wallet(gdaxAccounts[0].getProfileId(), balances);
+  }
+
+  public static Wallet adaptAccountInfo(GDAXAccount gdaxAccount) {
+    Balance balance = new Balance(Currency.getInstance(gdaxAccount.getCurrency()), gdaxAccount.getBalance(), gdaxAccount.getAvailable(), gdaxAccount.getHold());
+    return new Wallet(gdaxAccount.getProfileId(), balance);
   }
 
   public static OpenOrders adaptOpenOrders(GDAXOrder[] coinbaseExOpenOrders) {

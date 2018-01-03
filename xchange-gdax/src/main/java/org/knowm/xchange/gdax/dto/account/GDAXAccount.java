@@ -11,15 +11,23 @@ public class GDAXAccount {
   private final BigDecimal balance;
   private final BigDecimal hold;
   private final BigDecimal available;
+  private final boolean marginEnabled;
+  private final BigDecimal fundedAmount;
+  private final BigDecimal defaultAmount;
 
   public GDAXAccount(@JsonProperty("id") String id, @JsonProperty("currency") String currency, @JsonProperty("profile_id") String profile_id,
-      @JsonProperty("balance") BigDecimal balance, @JsonProperty("hold") BigDecimal hold, @JsonProperty("available") BigDecimal available) {
+      @JsonProperty("balance") BigDecimal balance, @JsonProperty("hold") BigDecimal hold, @JsonProperty("available") BigDecimal available,
+      @JsonProperty("margin_enabled") boolean marginEnabled, @JsonProperty("funded_amount") BigDecimal fundedAmount,
+      @JsonProperty("default_amount") BigDecimal defaultAmount) {
     this.id = id;
     this.currency = currency;
     this.profile_id = profile_id;
     this.balance = balance;
     this.hold = hold;
     this.available = available;
+    this.marginEnabled = marginEnabled;
+    this.fundedAmount = fundedAmount;
+    this.defaultAmount = defaultAmount;
   }
 
   public String getId() {
@@ -30,7 +38,7 @@ public class GDAXAccount {
     return currency;
   }
 
-  public String getProfile_id() {
+  public String getProfileId() {
     return profile_id;
   }
 
@@ -44,6 +52,18 @@ public class GDAXAccount {
 
   public BigDecimal getAvailable() {
     return available;
+  }
+
+  public boolean isMarginEnabled() {
+    return marginEnabled;
+  }
+
+  public BigDecimal getFundedAmount() {
+    return fundedAmount;
+  }
+
+  public BigDecimal getDefaultAmount() {
+    return defaultAmount;
   }
 
   @Override
@@ -61,6 +81,12 @@ public class GDAXAccount {
     builder.append(hold);
     builder.append(", available=");
     builder.append(available);
+    builder.append(", marginEnabled=");
+    builder.append(marginEnabled);
+    builder.append(", fundedAmount=");
+    builder.append(fundedAmount);
+    builder.append(", defaultAmount=");
+    builder.append(defaultAmount);
     builder.append("]");
     return builder.toString();
   }
